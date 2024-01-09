@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Routing dla EmployeesController
+  get 'employees/reserve', to: 'employees#index', as: 'employees_reserve'
+  get 'employees/new', to: 'employees#new', as: 'new_reservation'
+  post 'employees', to: 'employees#create'
+  get 'employees/:id/edit', to: 'employees#edit', as: 'edit_reservation'
+  patch 'employees/:id', to: 'employees#update'
+  delete 'employees/:id', to: 'employees#destroy'
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # Routing dla AdminController
+  get 'admin/desks', to: 'admin#desks', as: 'admin_desks'
+  post 'admin', to: 'admin#create'
+  get 'admin/:id/edit', to: 'admin#edit', as: 'edit_desk'
+  patch 'admin/:id', to: 'admin#update'
+  delete 'admin/:id', to: 'admin#delete', as: 'delete_desk'
+
+  # Dodatkowe routingi
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # Możesz tu zdefiniować główną ścieżkę, jeśli chcesz
+  # root "some_controller#some_action"
 end
