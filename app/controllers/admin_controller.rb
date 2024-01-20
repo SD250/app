@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  before_action :authenticate_user!
   # Akcja wyświetlania listy biurek
   def desks
     @desks = Desk.all
@@ -24,6 +25,8 @@ class AdminController < ApplicationController
     @desk = Desk.find(params[:id])
     if @desk.update(desk_params)
       redirect_to admin_desks_path, notice:
+   end
+end
 
   # Akcja usuwania biurka (DELETE request)
  def delete
