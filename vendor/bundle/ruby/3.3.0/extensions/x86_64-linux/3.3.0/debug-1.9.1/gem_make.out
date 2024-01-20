@@ -1,0 +1,19 @@
+current directory: /home/maciej/HotDeskReservationApp/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+/home/maciej/.asdf/installs/ruby/3.3.0/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/maciej/HotDeskReservationApp/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240113-1141-cx78n sitelibdir\=./.gem.20240113-1141-cx78n clean
+
+current directory: /home/maciej/HotDeskReservationApp/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240113-1141-cx78n sitelibdir\=./.gem.20240113-1141-cx78n
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/maciej/HotDeskReservationApp/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240113-1141-cx78n sitelibdir\=./.gem.20240113-1141-cx78n install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20240113-1141-cx78n/debug
+
+current directory: /home/maciej/HotDeskReservationApp/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240113-1141-cx78n sitelibdir\=./.gem.20240113-1141-cx78n clean

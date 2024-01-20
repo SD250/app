@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AppM</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>TwojaAplikacja</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+<body>
+  <% if user_signed_in? %>
+    <%= link_to 'Wyloguj', destroy_user_session_path, method: :delete %>
+    <!-- Możesz dodać więcej linków dla zalogowanych użytkowników tutaj -->
+  <% else %>
+    <%= link_to 'Zaloguj', new_user_session_path %> |
+    <%= link_to 'Zarejestruj', new_user_registration_path %>
+  <% end %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= yield %>
+</body>
 </html>
