@@ -1,0 +1,19 @@
+current directory: /home/sebastian/appM/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+/home/sebastian/.asdf/installs/ruby/3.3.0/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/sebastian/appM/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240120-1190-hgy4iq sitelibdir\=./.gem.20240120-1190-hgy4iq clean
+
+current directory: /home/sebastian/appM/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240120-1190-hgy4iq sitelibdir\=./.gem.20240120-1190-hgy4iq
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/sebastian/appM/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240120-1190-hgy4iq sitelibdir\=./.gem.20240120-1190-hgy4iq install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20240120-1190-hgy4iq/debug
+
+current directory: /home/sebastian/appM/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240120-1190-hgy4iq sitelibdir\=./.gem.20240120-1190-hgy4iq clean

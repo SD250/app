@@ -21,13 +21,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_13_210822) do
 
   create_table "reservations", force: :cascade do |t|
     t.integer "desk_id"
-    t.integer "employee_id"
+    t.integer "user_id"
     t.datetime "start_date"
     t.datetime "end_date"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["desk_id"], name: "index_reservations_on_desk_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,4 +39,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_13_210822) do
   end
 
   add_foreign_key "reservations", "desks"
+  add_foreign_key "reservations", "users"
 end
