@@ -1,16 +1,29 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>AppM</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>TwojaNazwaAplikacji</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+  <% if logged_in? %>
+    <%= button_to 'Wyloguj', logout_path, method: :delete, form: { class: "navbar-form" } %>
+    <!-- Dodatkowe linki lub informacje, gdy użytkownik jest zalogowany -->
+  <% else %>
+    <%= link_to 'Zaloguj', login_path %>
+    <%= link_to 'Zarejestruj się', signup_path %>
+    <!-- Dodatkowe linki lub informacje, gdy użytkownik nie jest zalogowany -->
+  <% end %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <% flash.each do |type, message| %>
+    <div class="alert alert-<%= type %>">
+      <%= message %>
+    </div>
+  <% end %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= yield %>
+</body>
 </html>

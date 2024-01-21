@@ -1,0 +1,23 @@
+<h1>Logowanie</h1>
+
+<% if flash[:alert] %>
+  <p class="alert"><%= flash[:alert] %></p>
+<% end %>
+
+<%= form_with(scope: :session, url: login_path) do |form| %>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Loguj" %>
+  </div>
+<% end %>
+
+<%= link_to "Nie masz konta? Zarejestruj się", signup_path %>

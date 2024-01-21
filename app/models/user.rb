@@ -1,11 +1,11 @@
 class User < ApplicationRecord
-	devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
-	has_one :reservation
-	 has_secure_password
-	 # Walidacja obecności i unikalności email
-  validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
+  has_one :reservation
 
-  # Walidacja obecności i długości hasła
-  validates :password, presence: true, length: { minimum: 6 }, if: -> { new_record? || !password.nil? }
+  # has_secure_password używa bcrypt do bezpiecznego przechowywania haseł
+  has_secure_password
+
+  # Walidacja obecności i unikalności email
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  
+  # Możesz dodać inne walidacje zgodnie z potrzebami aplikacji
 end

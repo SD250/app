@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
+  root 'sessions#new'
+  
+  # Routing dla sesji
+get 'login', to: 'sessions#new', as: 'login'
+post 'login', to: 'sessions#create'
+delete 'logout', to: 'sessions#destroy', as: 'logout'  # Zaktualizowane na DELETE
 
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
-  } 
+  # Routing dla rejestracji użytkowników
+  get 'signup', to: 'users#new', as: 'signup'
+  post 'users', to: 'users#create'
 
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
+  resources :users, only: [:show, :edit, :update, :destroy]
 
   # Routing dla EmployeesController
   get 'employees/reserve', to: 'employees#index', as: 'employees_reserve'

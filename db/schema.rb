@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_13_210822) do
 
   create_table "reservations", force: :cascade do |t|
     t.integer "desk_id"
-    t.integer "employee_id"
+    t.integer "user_id"
     t.datetime "start_date"
     t.datetime "end_date"
     t.string "status"

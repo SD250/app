@@ -1,0 +1,19 @@
+current directory: /home/maciej/HotDeskReservationApp/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+/home/maciej/.asdf/installs/ruby/3.3.0/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/maciej/HotDeskReservationApp/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240120-79089-bt7x4g sitelibdir\=./.gem.20240120-79089-bt7x4g clean
+
+current directory: /home/maciej/HotDeskReservationApp/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240120-79089-bt7x4g sitelibdir\=./.gem.20240120-79089-bt7x4g
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/maciej/HotDeskReservationApp/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240120-79089-bt7x4g sitelibdir\=./.gem.20240120-79089-bt7x4g install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20240120-79089-bt7x4g/debug
+
+current directory: /home/maciej/HotDeskReservationApp/vendor/bundle/ruby/3.3.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240120-79089-bt7x4g sitelibdir\=./.gem.20240120-79089-bt7x4g clean

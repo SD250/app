@@ -1,0 +1,9 @@
+<h1>Profil Użytkownika</h1>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<%= link_to 'Edytuj profil', edit_user_path(@user) %> |
+<%= link_to 'Powrót', root_path %>

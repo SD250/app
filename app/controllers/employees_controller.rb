@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
+
   # Wyświetlanie listy dostępnych biurek do rezerwacji (GET request)
   def index
     @desks = Desk.all
@@ -12,7 +13,7 @@ class EmployeesController < ApplicationController
 
   # Tworzenie nowej rezerwacji biurka (POST request)
   def create
-    @reservation = Reservation.new(reservation_params)
+    @reservation = Reservation.new(reservation_params.merge(user_id: current_user.id))
     if @reservation.save
       redirect_to employees_reserve_path, notice: 'Reservation was successfully created.'
     else
@@ -45,6 +46,13 @@ class EmployeesController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:desk_id, :user_id, :start_date, :end_date, :status)
+    params.require(:reservation).permit(:desk_id, :start_date, :end_date, :status)
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:alert] = "Musisz być zalogowany, aby wykonać tę akcję."
+      redirect_to login_path
+    end
   end
 end
