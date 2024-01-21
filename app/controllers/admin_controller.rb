@@ -1,8 +1,12 @@
 class AdminController < ApplicationController
-  before_action :authenticate_user!
-  # Akcja wyświetlania listy biurek
+
   def desks
     @desks = Desk.all
+  end
+
+  # Dodawanie nowego biurka
+  def new_desk
+    @desk = Desk.new
   end
 
   # Akcja tworzenia nowego biurka (POST request)
@@ -11,8 +15,12 @@ class AdminController < ApplicationController
     if @desk.save
       redirect_to admin_desks_path, notice: 'Desk was successfully created.'
     else
-      render :new
+      render :new_desk
     end
+  end
+
+  def edit_desk
+    @desk = Desk.find
   end
 
   # Akcja edycji istniejącego biurka (GET request)
@@ -34,6 +42,12 @@ end
    @desk.destroy
    redirect_to admin_desks_path, notice: 'Desk was successfully deleted.'
  end
+
+  def destroy_desk
+    @desk = Desk.find(params[:id])
+    @desk.destroy
+    redirect_to admin_desks_path, notice: 'Biurko zostało usunięte.'
+  end
 
  private
 

@@ -8,8 +8,13 @@ class SessionsController < ApplicationController
   def create
   user = User.find_by(email: params[:session][:email].downcase)
   if user && user.authenticate(params[:session][:password])
+    if user.admin?
+      session[:user_id] = user.id
+      redirect_to admin_desks_path, notice: 'Zalogowano jako administrator.'
+    else
     session[:user_id] = user.id
     redirect_to user_path(user), notice: 'Zalogowano pomyślnie.'
+    end
   else
     flash.now[:alert] = 'Nieprawidłowy e-mail lub hasło'
     render :new

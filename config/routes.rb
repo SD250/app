@@ -19,13 +19,15 @@ delete 'logout', to: 'sessions#destroy', as: 'logout'  # Zaktualizowane na DELET
   get 'employees/:id/edit', to: 'employees#edit', as: 'edit_employee_reservation'
   patch 'employees/:id', to: 'employees#update'
   delete 'employees/:id', to: 'employees#destroy'
-  
+
   # Routing dla AdminController
+  get 'admin/desks/new', to: 'admin#new_desk', as: 'new_desk'
   get 'admin/desks', to: 'admin#desks', as: 'admin_desks'
   post 'admin/desks', to: 'admin#create'
   get 'admin/desks/:id/edit', to: 'admin#edit', as: 'edit_desk'
   patch 'admin/desks/:id', to: 'admin#update'
   delete 'admin/desks/:id', to: 'admin#delete'
+  delete 'admin/desks/:id', to: 'admin#destroy_desk', as: 'destroy_desk'
 
   # Dodatkowe routingi
   get "up" => "rails/health#show", as: :rails_health_check

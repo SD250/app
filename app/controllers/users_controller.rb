@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
   end
 
   def require_login
@@ -61,4 +61,10 @@ class UsersController < ApplicationController
   def correct_user
     redirect_to(root_url, alert: "Nie masz uprawnień do tej operacji.") unless @user == current_user
   end
+
+  def check_if_admin
+    if current_user.admin?
+    end
+  end
 end
+

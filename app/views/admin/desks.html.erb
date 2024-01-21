@@ -1,2 +1,35 @@
-<h1>Admin#desks</h1>
-<p>Find me in app/views/admin/desks.html.erb</p>
+<!-- app/views/admin/desks.html.erb -->
+<h1>Panel Administratora - Lista Biurek</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Nazwa</th>
+    <th>Lokalizacja</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @desks.present? %>
+    <% @desks.each do |desk| %>
+      <tr>
+        <td><%= desk.name %></td>
+        <td><%= desk.location %></td>
+        <td><%= desk.status %></td>
+        <td>
+          <%= link_to 'Edytuj biurko', edit_desk_path(desk), class: 'button' %>
+        </td>
+        <td>
+          <%= button_to 'Usuń biurko', destroy_desk_path(desk), method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć to biurko?' }, class: 'button' %>
+        </td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="3">Brak dostępnych biurek.</td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Dodaj biurko', new_desk_path, class: 'button' %>
