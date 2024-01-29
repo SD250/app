@@ -1,9 +1,15 @@
 class EmployeesController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
 
-  # Wyświetlanie listy dostępnych biurek do rezerwacji (GET request)
-  def index
+  def reserve
     @desks = Desk.all
+  end
+
+  def reserve_desk
+    desk = Desk.find(params[:id])
+    desk.update(status: 'zajęte')
+
+    redirect_to employees_reserve_path, notice: 'Desk reserved successfully.'
   end
 
   # Formularz do tworzenia nowej rezerwacji (GET request)

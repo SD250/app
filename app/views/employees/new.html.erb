@@ -1,0 +1,36 @@
+<h1>Nowa Rezerwacja Biurka</h1>
+
+<%= form_with model: @reservation, url: employees_path, local: true do |form| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+      <ul>
+        <% @reservation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :desk_id %>
+    <%= form.collection_select :desk_id, Desk.all, :id, :name, prompt: "Select a desk" %>
+  </div>
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.datetime_select :start_date %>
+  </div>
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.datetime_select :end_date %>
+  </div>
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+  <div class="actions">
+    <%= form.submit "Create Reservation" %>
+  </div>
+<% end %>
+
+<%= link_to 'Powrót', employees_reserve_path %>

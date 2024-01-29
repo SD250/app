@@ -11,6 +11,13 @@ delete 'logout', to: 'sessions#destroy', as: 'logout'  # Zaktualizowane na DELET
   post 'users', to: 'users#create'
 
   resources :users, only: [:show, :edit, :update, :destroy]
+  resources :employees, only: [:new, :edit, :update] do
+    get 'reserve', on: :collection
+    patch 'reserve_desk/:id', to: 'employees#reserve_desk', as: 'reserve_desk'
+  end
+
+  patch 'reserve_desk/:id', to: 'employees#reserve', as: 'reserve_desk'
+  get 'reserve_desk/:id', to: 'employees#reserve_desk', as: 'reserve_desk_form'
 
   # Routing dla EmployeesController
   get 'employees/reserve', to: 'employees#index', as: 'employees_reserve'

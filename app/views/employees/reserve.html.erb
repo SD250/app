@@ -1,2 +1,47 @@
-<h1>Employees#reserve</h1>
-<p>Find me in app/views/employees/reserve.html.erb</p>
+<h1>Rezerwacja Biurka</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Nazwa</th>
+    <th>Lokalizacja</th>
+    <th>Rezerwacja</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @desks.present? %>
+    <% @desks.each do |desk| %>
+      <tr>
+        <td><%= desk.name %></td>
+        <td><%= desk.location %></td>
+        <td>
+          <%= form_with model: Reservation.new, url: employees_path, local: true do |form| %>
+            <%= form.hidden_field :desk_id, value: desk.id %>
+            <div class="field">
+              <%= form.label :start_date %>
+              <%= form.datetime_select :start_date, value: Time.now %>
+            </div>
+            <div class="field">
+              <%= form.label :end_date %>
+              <%= form.datetime_select :end_date, value: 1.hour.from_now %>
+            </div>
+            <div class="actions">
+              <% if desk.status == 'dostępne' %>
+                <%= link_to 'Zarezerwuj biurko', reserve_desk_form_path(desk), method: :patch, class: 'button', data: { confirm: 'Czy na pewno chcesz zarezerwować to biurko?' } %>
+              <% else %>
+                <span class="reserved">Zajęte</span>
+              <% end %>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="4">Brak dostępnych biurek.</td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Powrót', root_path %>
