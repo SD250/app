@@ -25,7 +25,7 @@ delete 'logout', to: 'sessions#destroy', as: 'logout'  # Zaktualizowane na DELET
   get 'admin/desks', to: 'admin#desks', as: 'admin_desks'
   post 'admin/desks', to: 'admin#create'
   get 'admin/desks/:id/edit', to: 'admin#edit', as: 'edit_desk'
-  patch 'admin/desks/:id', to: 'admin#update'
+  patch 'admin/desks/:id', to: 'admin#update', as: 'update_desk'
   delete 'admin/desks/:id', to: 'admin#delete'
   delete 'admin/desks/:id', to: 'admin#destroy_desk', as: 'destroy_desk'
 
